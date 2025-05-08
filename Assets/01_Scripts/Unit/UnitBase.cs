@@ -51,6 +51,33 @@ public class UnitBase : PoolingObject
         else
             return false;
     }
+
+
+    public void OnIdle()
+    {
+        if (unitBaseState != UnitBaseState.Idle)
+            unitBaseState = UnitBaseState.Idle;
+    }
+    public void OnMove()
+    {
+        if (unitBaseState != UnitBaseState.Move)
+            unitBaseState = UnitBaseState.Move;
+    }
+    public void OnAttackReady()
+    {
+        if (unitBaseState != UnitBaseState.AttackReady)
+            unitBaseState = UnitBaseState.AttackReady;
+    }
+    public void OnAttack()
+    {
+        if (unitBaseState != UnitBaseState.Attack)
+            unitBaseState = UnitBaseState.Attack;
+    }
+    public void OnDie()
+    {
+        if (unitBaseState != UnitBaseState.Die)
+            unitBaseState = UnitBaseState.Die;
+    }
 }
 public enum UnitBaseState
 {

@@ -126,13 +126,17 @@ public class Manager_Controller : Singleton<Manager_Controller>
 
                     // Player 이동
                     unit_Target.MoveDirection(dir);
+
+                    if (!unit_Target.IsDead())
+                        unit_Target.OnMove();
                 }
             }
         }
         else
         {
             // Player 이동종료 액션
-
+            if (!unit_Target.IsDead())
+                unit_Target.OnIdle();
         }
 
 
