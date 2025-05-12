@@ -37,7 +37,7 @@ public class Manager_Unit : Singleton<Manager_Unit>
 
     public UnitBase SpawnHero()
     {
-        UnitStats unitStats = CV_UnitData.GetPlayerStats();
+        UnitDatas unitStats = CV_UnitData.GetPlayerStats();
 
         SpawnPosData spawnPosData = new SpawnPosData();
         spawnPosData.xPos_Left = -100;
@@ -54,7 +54,7 @@ public class Manager_Unit : Singleton<Manager_Unit>
     {
         float spawnPosX = 1000;
 
-        UnitStats unitStats = CV_UnitData.GetMonsterStats();
+        UnitDatas unitStats = CV_UnitData.GetMonsterStats();
 
         SpawnPosData spawnPosData = new SpawnPosData();
         spawnPosData.xPos_Left = spawnPosX - 50;
@@ -66,7 +66,7 @@ public class Manager_Unit : Singleton<Manager_Unit>
         SpawnUnitBase(1, unitStats);
     }
 
-    UnitBase SpawnUnitBase(int teamIndex, UnitStats unitStats) // 유닛 스폰
+    UnitBase SpawnUnitBase(int teamIndex, UnitDatas unitStats) // 유닛 스폰
     {
         UnitBase unitBase = Manager_Pooling.Instance.GetUnitBase(unitStats, unitStats.spawnPosData.GetRandomPos(), Quaternion.identity);
 

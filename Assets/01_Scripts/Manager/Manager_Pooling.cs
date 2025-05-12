@@ -68,7 +68,7 @@ public class Manager_Pooling : Singleton<Manager_Pooling>
 
 
 
-    public UnitBase GetUnitBase(UnitStats unitStats, Vector3 spawnPos, Quaternion spawnRot)
+    public UnitBase GetUnitBase(UnitDatas unitStats, Vector3 spawnPos, Quaternion spawnRot)
     {
         string fileName = unitStats.fileName;
 
@@ -99,6 +99,7 @@ public class Manager_Pooling : Singleton<Manager_Pooling>
 
         return poolingObject.GetComponent<UnitBase>();
     }
+
 
     public T GetPoolingObject<T>(string fileName, string pathCreate = "") where T : PoolingObject
     {

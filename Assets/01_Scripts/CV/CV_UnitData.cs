@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class CV_UnitData
 {
-    public static UnitStats GetPlayerStats()
+    public static UnitDatas GetPlayerStats()
     {
-        UnitStats unitStats = new UnitStats();
+        UnitDatas unitStats = new UnitDatas();
 
         unitStats.unitType = UnitType.Player;
 
-        unitStats.attack = 100;
+        unitStats.attack = 100;     // 스탯 관련부분은 전부다 액셀로 정리 및 데이터 받아오기
         unitStats.maxHealth = 100;
         unitStats.moveSpeed = 300;
 
         unitStats.fileName = "player";
+        unitStats.spriteName = "sprite_player";
 
         return unitStats;
     }
 
-    public static UnitStats GetMonsterStats()
+    public static UnitDatas GetMonsterStats()
     {
-        UnitStats unitStats = new UnitStats();
+        UnitDatas unitStats = new UnitDatas();
 
         unitStats.unitType = UnitType.Monster;
 
@@ -30,11 +31,12 @@ public class CV_UnitData
         unitStats.moveSpeed = 200;
 
         unitStats.fileName = "monster";
+        unitStats.spriteName = "sprite_monster";
 
         return unitStats;
     }
 }
-public class UnitStats
+public class UnitDatas
 {
     public UnitType unitType;
     public SpawnPosData spawnPosData;
@@ -44,6 +46,7 @@ public class UnitStats
     public float moveSpeed;
 
     public string fileName;
+    public string spriteName;
 }
 public class SpawnPosData
 {

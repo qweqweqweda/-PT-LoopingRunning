@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class UnitBase : PoolingObject
 {
-    public UnitStats playerStats;
+    public UnitDatas unitStats;
     public UnitBaseState unitBaseState;
+    public SpriteRenderer unit_Sprite;
 
     public int teamIndex;
 
-    public void Init(int _teamIndex, UnitStats _unitStats)
+    public void Init(int _teamIndex, UnitDatas _unitStats)
     {
         teamIndex = _teamIndex;
-        playerStats = _unitStats;
-        playerStats.health = playerStats.maxHealth;
+        unitStats = _unitStats;
+        unitStats.health = unitStats.maxHealth;
+
+        if (unit_Sprite == null)
+        {
+            GameObject GO = new GameObject("sprite");
+            SpriteRenderer spriteRenderer = GO.AddComponent<SpriteRenderer>();
+            GO.transform.SetParent(transform);
+            GO.transform.localPosition = Vector3.zero;
+            GO.transform.localEulerAngles = Vector3.zero;
+            GO.transform.localScale = new Vector3(100, 100, 100);
+            spriteRenderer.sprite = Resources.Load(unitStats.spriteName, typeof(Sprite)) as Sprite;
+
+            unit_Sprite = spriteRenderer;
+        }
     }
 
     public void MovePosition(Vector3 pos)
@@ -41,7 +55,7 @@ public class UnitBase : PoolingObject
 
     float GetMoveSpeed()
     {
-        return playerStats.moveSpeed;
+        return unitStats.moveSpeed;
     }
 
     public bool IsDead()
