@@ -23,6 +23,8 @@ public class Manager_Game : Singleton<Manager_Game>
         SpawnPlayer();
 
         gameState = GameState.Play;
+
+        Manager_Unit.Instance.SpawnMonster();
     }
 
     public void SetStageData()
@@ -34,6 +36,7 @@ public class Manager_Game : Singleton<Manager_Game>
         _stageData.stage_Background_Name = "background";
 
         stageData = _stageData;
+
     }
 
     public void SpawnPlayer()
