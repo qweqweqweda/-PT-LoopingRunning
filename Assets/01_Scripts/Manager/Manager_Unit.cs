@@ -38,6 +38,7 @@ public class Manager_Unit : Singleton<Manager_Unit>
     public UnitBase SpawnHero()
     {
         UnitDatas unitStats = CV_UnitData.GetPlayerStats();
+        unitStats.unitAttackType = UnitAttackType.Melee;
 
         SpawnPosData spawnPosData = new SpawnPosData();
         spawnPosData.xPos_Left = -100;
@@ -55,6 +56,7 @@ public class Manager_Unit : Singleton<Manager_Unit>
         float spawnPosX = 1000;
 
         UnitDatas unitStats = CV_UnitData.GetMonsterStats();
+        unitStats.unitAttackType = UnitAttackType.Melee;
 
         SpawnPosData spawnPosData = new SpawnPosData();
         spawnPosData.xPos_Left = spawnPosX - 50;
@@ -79,6 +81,8 @@ public class Manager_Unit : Singleton<Manager_Unit>
     {
         UnitBase unitBase_target = null;
         float minDistance = 0;
+
+        Debug.Log("searching");
 
         if (unitBases.Count > 0)
         {

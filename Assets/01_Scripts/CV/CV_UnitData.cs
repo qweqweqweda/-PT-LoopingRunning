@@ -10,9 +10,17 @@ public class CV_UnitData
 
         unitStats.unitType = UnitType.Player;
 
-        unitStats.attack = 100;     // 스탯 관련부분은 전부다 액셀로 정리 및 데이터 받아오기
+        unitStats.attack = 1;     // 스탯 관련부분은 전부다 액셀로 정리 및 데이터 받아오기
+        unitStats.attackRange = 10;
+        unitStats.attackSpeed = 1;
+
         unitStats.maxHealth = 100;
+
         unitStats.moveSpeed = 300;
+
+        unitStats.detectRange = 1000;
+
+        unitStats.unitRadius = 10;
 
         unitStats.fileName = "player";
         unitStats.spriteName = "sprite_player";
@@ -26,9 +34,15 @@ public class CV_UnitData
 
         unitStats.unitType = UnitType.Monster;
 
-        unitStats.attack = 50;
+        unitStats.attack = 1;
+        unitStats.attackRange = 0;
+        unitStats.attackSpeed = 2;
         unitStats.maxHealth = 50;
         unitStats.moveSpeed = 200;
+
+        unitStats.detectRange = 300;
+
+        unitStats.unitRadius = 10;
 
         unitStats.fileName = "monster";
         unitStats.spriteName = "sprite_monster";
@@ -39,11 +53,21 @@ public class CV_UnitData
 public class UnitDatas
 {
     public UnitType unitType;
+    public UnitAttackType unitAttackType;
     public SpawnPosData spawnPosData;
+
     public float attack;
+    public float attackRange;
+    public float attackSpeed;
+
     public float maxHealth;
     public float health;
+
     public float moveSpeed;
+
+    public float unitRadius;
+
+    public float detectRange;
 
     public string fileName;
     public string spriteName;
@@ -71,4 +95,9 @@ public enum UnitType
 {
     Player,
     Monster
+}
+public enum UnitAttackType
+{
+    Melee,
+    Range
 }

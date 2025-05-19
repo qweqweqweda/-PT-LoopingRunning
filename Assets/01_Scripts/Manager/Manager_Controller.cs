@@ -111,24 +111,29 @@ public class Manager_Controller : Singleton<Manager_Controller>
 
             dir = touchPos_Current - touchPos_Enter;
 
-            if (onKeyboard)
+            if (!unit_Target.IsDead())
             {
-                dir = dir.normalized;
-
-                // Player 이동
-                unit_Target.MoveDirection(dir);
-            }
-            else
-            {
-                if (dir.magnitude >= 10)    // 10픽셀 이상 
+                if (onKeyboard)
                 {
                     dir = dir.normalized;
 
                     // Player 이동
+                    unit_Target.isControlled = true;
                     unit_Target.MoveDirection(dir);
 
-                    if (!unit_Target.IsDead())
+                    unit_Target.OnMove();
+                }
+                else
+                {
+                    if (dir.magnitude >= 10)    // 10픽셀 이상 
+                    {
+                        dir = dir.normalized;
+
+                        // Player 이동
+                        unit_Target.MoveDirection(dir);
+
                         unit_Target.OnMove();
+                    }
                 }
             }
         }
@@ -136,10 +141,18 @@ public class Manager_Controller : Singleton<Manager_Controller>
         {
             // Player 이동종료 액션
             if (!unit_Target.IsDead())
-                unit_Target.OnIdle();
+            {
+                if (touchCount_Last > 0)
+                {
+                    unit_Target.isControlled = false;
+                    unit_Target.DoAction();
+                }
+            }
+
         }
 
 
+        touchCount_Last = touchCount;
         SetCameraPos();
     }
 
