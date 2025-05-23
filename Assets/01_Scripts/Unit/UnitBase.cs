@@ -147,40 +147,40 @@ public class UnitBase : PoolingObject
         {
             OnDie();
         }
+
+        Debug.Log(gameObject.name + " | HP : " + unitDatas.health);
     }
 
     public void OnIdle()
     {
         if (unitBaseState != UnitBaseState.Idle)
             unitBaseState = UnitBaseState.Idle;
-
-        Debug.Log("idle");
     }
     public void OnMove()
     {
         if (unitBaseState != UnitBaseState.Move)
             unitBaseState = UnitBaseState.Move;
-
-        Debug.Log("move");
     }
     public void OnAttackReady()
     {
         if (unitBaseState != UnitBaseState.AttackReady)
             unitBaseState = UnitBaseState.AttackReady;
-
-        Debug.Log("attacReady");
     }
     public void OnAttack()
     {
         if (unitBaseState != UnitBaseState.Attack)
             unitBaseState = UnitBaseState.Attack;
 
-        Debug.Log("attack");
+        stateAttack = 0;
+        deltaTime_AttackReady = 0;
+        deltaTime_Attack = 0;
     }
     public void OnDie()
     {
         if (unitBaseState != UnitBaseState.Die)
             unitBaseState = UnitBaseState.Die;
+
+        DieListener();
     }
     protected virtual void OnDamagedListener(float damage, UnitBase unitBase_Target) { }
     protected virtual void DieListener() { }

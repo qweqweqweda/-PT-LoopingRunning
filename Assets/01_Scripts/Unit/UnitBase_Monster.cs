@@ -36,4 +36,10 @@ public class UnitBase_Monster : UnitBase_Battle
         }
         SearchRepeat(); // 얼정 시간마다 적 탐색
     }
+
+    protected override void DieListener()
+    {
+        Manager_UD.Instance.level_ud.exp += 1;  // 추후 경험치량 따로 계산해서 추가
+        Manager_UI.Instance.Set_UI_Level();
+    }
 }

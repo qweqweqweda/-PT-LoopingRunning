@@ -10,7 +10,7 @@ public class CV_UnitData
 
         unitStats.unitType = UnitType.Player;
 
-        unitStats.attack = 1;     // 스탯 관련부분은 전부다 액셀로 정리 및 데이터 받아오기
+        unitStats.attack = 10;     // 스탯 관련부분은 전부다 액셀로 정리 및 데이터 받아오기
         unitStats.attackRange = 10;
         unitStats.attackSpeed = 1;
 
